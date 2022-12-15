@@ -36,6 +36,7 @@ type Server struct {
 	Region           Region            `json:"region,omitempty"`
 	State            string            `json:"state,omitempty"`
 	Plan             Plan              `json:"plan,omitempty"`
+	Software         Software          `json:"software,omitempty"`
 	AvailableRegions AvailableRegions  `json:"availableregions,omitempty"`
 	Pricing          Pricing           `json:"pricing,omitempty"`
 	IPAddresses      []IPAddress       `json:"ip_addresses,omitempty"`
@@ -45,6 +46,17 @@ type Server struct {
 	Backup           BackupStorage     `json:"backup_storage,omitempty"`
 	Created          string            `json:"created_at,omitempty"`
 	TerminationDate  string            `json:"termination_date,omitempty"`
+}
+
+type Software struct {
+	Addons []Addon `json:"addons,omitempty"`
+}
+
+type Addon struct {
+	ID       int     `json:"id"`
+	Name     string  `json:"name"`
+	Pricing  Pricing `json:"pricing"`
+	Category string  `json:"category"`
 }
 
 type ReinstallServer struct {
